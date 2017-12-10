@@ -1,6 +1,6 @@
-## Restaurant Finder App
+## Book Trading Club
 
-Restaurant Finder App made with ReactJS/Redux on NodeJs/Express and Passport for Authentications.
+Book Trading Club App made with ReactJS/Redux on NodeJs/Express and Passport for Authentications.
     
 to run: 
 
