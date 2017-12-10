@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import {unlinkLocal,unlinkGoogle,unlinkGithub} from '../actions';
 import {Row, Col } from 'react-flexbox-grid';
 import RaisedButton from 'material-ui/RaisedButton';
-import IconButton from 'material-ui/IconButton';
+// import IconButton from 'material-ui/IconButton';
 import FontIcon from 'material-ui/FontIcon';
 import { Accordion, AccordionItem } from 'react-sanfona';
 
@@ -28,7 +28,6 @@ class ProfileComp extends React.Component {
                                 title={<span className="react-sanfona-item-title"><i className="fa fa-floppy-o local-color" aria-hidden="true"></i> Local Profile</span>} 
                                 expanded={true}
                                 >
-                {/*<Link to="/profile-update"><IconButton iconClassName="fa fa-pencil-square-o"  tooltip="Edit Local Profile"/></Link>*/}
                  <p>
                     { user.local.name && <span><strong>Name</strong>: { user.local.name}<br /></span>}
                     { user.state && <span><strong>State</strong>: { user.state}<br /></span>}

@@ -1,5 +1,4 @@
 import React from 'react';
-// import Divider from 'material-ui/Divider';
 import IconButton from 'material-ui/IconButton';
 import FlatButton from 'material-ui/FlatButton';
 import Dialog from 'material-ui/Dialog';
@@ -7,7 +6,7 @@ import Badge from 'material-ui/Badge';
 import {Row, Col } from 'react-flexbox-grid';
 import WorkingView from './WorkingView.jsx';
 import SearchBar from './SearchBar.jsx';
-// const GoogleBooksView = (props) => { 
+
 class ClubBooksView extends React.Component {
  
   componentDidMount(){

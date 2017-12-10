@@ -63,7 +63,7 @@ class NavComp extends React.Component {
 
   handleToggle = () => {
   
-    console.log(this.props.drawer)
+    console.log(this.props.drawer);
     return this.props.drawerToggle(!this.props.drawer);
       
   }

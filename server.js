@@ -19,7 +19,6 @@ var book = require('./configs/bookModel.js');
 
 var app = express();
 var server = http.createServer(app);
-// var io = socketio.listen(server);
 app.use(cookieParser('HardSecret')); // cookie parser must use the same secret as express-session.
 const cookieExpirationDate = new Date();
 const cookieExpirationDays = 365;
@@ -44,7 +43,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 app.use(express.static(path.resolve(__dirname, 'client')));
-// app.use('/css',express.static(path.join(__dirname, '/client/css')));
 app.use(passport.initialize());
 app.use(passport.session());
 require('./auth/passportConfig.js')(app, passport, Account);

@@ -1,6 +1,4 @@
 import React from 'react';
-// import TextField from 'material-ui/TextField';
-// import Divider from 'material-ui/Divider';
 import IconButton from 'material-ui/IconButton';
 import FlatButton from 'material-ui/FlatButton';
 import Badge from 'material-ui/Badge';

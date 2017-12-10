@@ -2,8 +2,6 @@ import React from 'react'
 import { Field, reduxForm } from 'redux-form';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
-import FontIcon from 'material-ui/FontIcon';
-
 
 const validate = values => {
   const errors = {};
@@ -26,9 +24,7 @@ const validate = values => {
   if (!/(^\w+|\s)$/gi.test(values.state)) {
     errors.state = 'Only letters allowed!';
   }
-  // if (values.password !== values.confirmPassword){
-  //   errors.confirmPassword = 'Password did not match!'
-  // }
+  
   return errors;
 };
 

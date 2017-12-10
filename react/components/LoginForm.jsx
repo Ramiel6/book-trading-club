@@ -55,35 +55,15 @@ let LoginForm = props => {
                 />
       </div>
   </form>
-  )
-}
+  );
+};
 
 //Styles
 const textFieldStyle = {
-  inputStyle:{
-    color: "#FFFFFF"
-  },
-  hintStyle:{
-    color: "#BDBDBD"
-  },
-  floatingLabelStyle: {
-    color: "#BDBDBD"
-  },
   focusUnderLine: {
     borderColor: '#9E9D24'
   }
-}
-// const styles = {
-//   error: {
-//     position: 'relative',
-//     bottom: 15,
-//     fontSize: 12,
-//     lineHeight: 12,
-//     color: '#f44336',
-//     transition: 'all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms'
-//   }
-// }
-
+};
 
 LoginForm = reduxForm({
   // a unique name for the form

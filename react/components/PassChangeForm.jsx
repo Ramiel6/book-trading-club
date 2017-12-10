@@ -1,8 +1,7 @@
 import React from 'react'
-import { Field, reduxForm } from 'redux-form'
-import TextField from 'material-ui/TextField'
+import { Field, reduxForm } from 'redux-form';
+import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
-import FontIcon from 'material-ui/FontIcon';
 
 
 const validate = values => {
@@ -60,19 +59,11 @@ let PassChangeForm = props => {
 }
 //Styles
 const textFieldStyle = {
-  inputStyle:{
-    color: "#FFFFFF"
-  },
-  hintStyle:{
-    color: "#BDBDBD"
-  },
-  floatingLabelStyle: {
-    color: "#BDBDBD"
-  },
+  
   focusUnderLine: {
     borderColor: '#9E9D24'
   }
-}
+};
 
 
 PassChangeForm  = reduxForm({

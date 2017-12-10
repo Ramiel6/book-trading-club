@@ -498,8 +498,7 @@ export const signUp = function (user){
         // Dispatch another action
         // to consume data
         console.log(json);
-        console.log("Success");
-        // dispatch(singUpSuccess(json.data))
+        console.log("Success")
         dispatch(getStatus());
         dispatch(handelSnackbar(true,'Signed Up Successfull',3000));
         store.dispatch(push('/profile'));
@@ -599,9 +598,6 @@ export const login = function (user){
        url: '/login',
        data:data
      })
-      // .then(function(response) {
-      //   return response.json()
-      // })
       .then(function Success (response) {
         // Dispatch another action
         // to consume data
@@ -627,9 +623,6 @@ export const unlinkLocal = function (){
        method: 'GET',
        url: '/unlink/local',
      })
-      // .then(function(response) {
-      //   return response.json()
-      // })
       .then(function Success (response) {
         // Dispatch another action
         // to consume data
@@ -654,9 +647,6 @@ export const unlinkGoogle = function (){
        method: 'GET',
        url: '/unlink/google',
      })
-      // .then(function(response) {
-      //   return response.json()
-      // })
       .then(function Success (response) {
         // Dispatch another action
         // to consume data
@@ -681,9 +671,6 @@ export const unlinkGithub = function (){
        method: 'GET',
        url: '/unlink/github',
      })
-      // .then(function(response) {
-      //   return response.json()
-      // })
       .then(function Success (response) {
         // Dispatch another action
         // to consume data

@@ -19,12 +19,8 @@ class RequestedBooksView extends React.Component {
       handleClub();
     }
   render()  {
-    const styles = {
-            pink:{
-              color: '#FFC0CB'
-            },
-          };
- return (
+    
+  return (
      <div>
         {this.props.isWorking ?
             <Row center="xs">
@@ -102,4 +98,9 @@ class RequestedBooksView extends React.Component {
              </Dialog>}
               </div>
 )}}
+const styles = {
+            pink:{
+              color: '#FFC0CB'
+            },
+          };
 export default RequestedBooksView;
