@@ -40,13 +40,13 @@ class LoginComp extends React.Component {
                 backgroundColor='#F44336'
                 labelColor ="#FFFFFF"
                 style={styles.button}
-                icon={<FontIcon className="fa fa-google-plus" />}
+                icon={<FontIcon className="fab fa-google-plus-g" />}
                 />
             <RaisedButton
                 href="/auth/github"
                 label="Github"
                 style={styles.button}
-                icon={<FontIcon className="fa fa-github" />}
+                icon={<FontIcon className="fab fa-github" />}
                 />
           </div>
         </Col>

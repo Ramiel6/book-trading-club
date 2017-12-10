@@ -11,16 +11,18 @@ import FlatButton from 'material-ui/FlatButton';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 
 const NavBig  = (props) => (
-
-      props.isLogedin  ?
       <div>
-      <Link to="/profile"><FlatButton style={props.style}><i className="fa fa-user" aria-hidden="true"></i> Profile</FlatButton></Link>
-      <FlatButton  style={props.style} onClick={props.logout}><i className="fa fa-sign-out" aria-hidden="true"></i> Logout</FlatButton>
-      </div>
+      <Link to="/about"><FlatButton style={props.style}> About</FlatButton></Link>
+      {props.isLogedin  ?
+      <span>
+      <Link to="/profile"><FlatButton style={props.style}><i className="fas fa-user" aria-hidden="true"></i> Profile</FlatButton></Link>
+      <FlatButton  style={props.style} onClick={props.logout}><i className="fas fa-sign-out-alt" aria-hidden="true"></i> Logout</FlatButton>
+      </span>
       :
-      <div>
-      <Link to="/login"><FlatButton style={props.style}><i className="fa fa fa-sign-in" aria-hidden="true"></i> Login</FlatButton></Link>
-      <Link to="/signup"><FlatButton style={props.style}><i className="fa fa-sign-in" aria-hidden="true"></i> Sign Up</FlatButton></Link>
+      <span>
+      <Link to="/login"><FlatButton style={props.style}><i className="fas fa fa-sign-in-alt" aria-hidden="true"></i> Login</FlatButton></Link>
+      <Link to="/signup"><FlatButton style={props.style}><i className="fas fa-sign-in-alt" aria-hidden="true"></i> Sign Up</FlatButton></Link>
+      </span>}
       </div>
     );
 NavBig.muiName = 'FlatButton';  
@@ -36,8 +38,9 @@ const NavSmall = (props) => (
     anchorOrigin={{horizontal: 'right', vertical: 'top'}}
     anchorOrigin={{horizontal: 'right', vertical: 'top'}}
   >
-    <Link to="/profile"><MenuItem ><i className="fa fa-user" aria-hidden="true"></i> Profile</MenuItem></Link>
-    <MenuItem onClick={props.logout}><i className="fa fa-sign-out" aria-hidden="true"></i> Logout</MenuItem>
+    <Link to="/about"><MenuItem ><i className="fas fa-user" aria-hidden="true"></i> About</MenuItem></Link>
+    <Link to="/profile"><MenuItem ><i className="fas fa-user" aria-hidden="true"></i> Profile</MenuItem></Link>
+    <MenuItem onClick={props.logout}><i className="fas fa-sign-out-alt" aria-hidden="true"></i> Logout</MenuItem>
   </IconMenu>:
   
   <IconMenu
@@ -48,8 +51,9 @@ const NavSmall = (props) => (
         anchorOrigin={{horizontal: 'right', vertical: 'top'}}
         anchorOrigin={{horizontal: 'right', vertical: 'top'}}
       >
-        <Link to="/login"><MenuItem ><i className="fa fa-sign-in" aria-hidden="true"></i> Login</MenuItem></Link>
-        <Link to="/signup"><MenuItem ><i className="fa fa-sign-in" aria-hidden="true"></i> Sign Up</MenuItem></Link>
+        <Link to="/about"><MenuItem ><i className="fas fa-user" aria-hidden="true"></i> About</MenuItem></Link>
+        <Link to="/login"><MenuItem ><i className="fas fa-sign-in-alt" aria-hidden="true"></i> Login</MenuItem></Link>
+        <Link to="/signup"><MenuItem ><i className="fas fa-sign-in-alt" aria-hidden="true"></i> Sign Up</MenuItem></Link>
       </IconMenu>
 );
 

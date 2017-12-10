@@ -15,19 +15,19 @@ class MainComp extends React.Component {
       
         <Col xs>
           <FeaturesView
-            iconClassName='fa fa-plus'
+            iconClassName='fas fa-plus'
             iconStyle={{color:'steelblue'}}
             cardText='Add your books.' 
             />
           
           <FeaturesView
-            iconClassName='fa fa-google'
+            iconClassName='fab fa-google'
             iconStyle={{color:'#F44336'}}
             cardText='Search Google Books for a book.' 
             />
           
            <FeaturesView
-            iconClassName='fa fa-exchange'
+            iconClassName='fas fa-exchange-alt'
             iconStyle={{color:'#111111'}}
             cardText='Trade books with other users.' 
             />
@@ -35,12 +35,12 @@ class MainComp extends React.Component {
         </Col>
         <Col xs={6} md={6}>
            <FeaturesView
-            iconClassName='fa fa-user'
+            iconClassName='fas fa-user'
             iconStyle={{color:'#111111'}}
             cardText='Regsiter with your social media accounts and link them.' 
             />
             <FeaturesView
-            iconClassName='fa fa-heart'
+            iconClassName='fas fa-heart'
             iconStyle={{color:'#fc4cce'}}
             cardText='Like our Club Books.' 
             />

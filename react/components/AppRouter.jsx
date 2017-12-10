@@ -24,6 +24,7 @@ import RequestedBooksView from './RequestedBooksView.jsx';
 import SideNavView from './SideNavView.jsx';
 import ProfileComp from './ProfileComp.jsx';
 import ProfileUpdateComp from './ProfileUpdateComp.jsx';
+import AboutView from './AboutView.jsx';
 // const renderMergedProps = (component, ...rest) => {
 // https://github.com/ReactTraining/react-router/issues/4105
 //   const finalProps = Object.assign({}, ...rest);
@@ -265,7 +266,8 @@ class AppRouter extends React.Component {
                                 component={ProfileUpdateComp}
                                 authed={this.props.isLogedin} 
                                 isLoaded={this.props.isLoaded}
-                                /> 
+                                />
+                  <Route path='/about' component={AboutView} /> 
                  </Switch>
               
               </Col>

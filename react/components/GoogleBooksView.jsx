@@ -72,11 +72,10 @@ class GoogleBooksView extends React.Component {
                       </div>
                       
                     <div className="card-bottom">
-                      <IconButton iconStyle ={styles.pink} iconClassName ="fa fa-heart" tooltip="Ligature" />
                       { this.props.user && this.props.user.books.includes(tile.id) ?  
-                            <IconButton iconStyle={{color:'#8BC34A'}} iconClassName ="fa fa-check-square-o" tooltip="Owen book" />:
-                            <IconButton iconStyle={{color:'#2196F3'}} iconClassName ="fa fa-plus" tooltip="Add Book" onClick={() => this.props.onUserClick(tile)}/>}
-                      <IconButton iconClassName ="fa fa-info" tooltip="Details" onClick={() => this.props.handleClubDialog(tile,true)}/>
+                            <IconButton iconStyle={{color:'#8BC34A'}} iconClassName ="far fa-check-circle" tooltip="Owen book" />:
+                            <IconButton iconStyle={{color:'#2196F3'}} iconClassName ="fas fa-plus" tooltip="Add Book" onClick={() => this.props.onUserClick(tile)}/>}
+                      <IconButton iconStyle={{color:'#3F51B5'}} iconClassName ="fas fa-info-circle" tooltip="Details" onClick={() => this.props.handleClubDialog(tile,true)}/>
                     </div>
                   
                   </div>

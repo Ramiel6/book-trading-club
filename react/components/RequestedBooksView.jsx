@@ -45,9 +45,9 @@ class RequestedBooksView extends React.Component {
                         />
                       </div>
                     <div className="card-bottom">
-                      <IconButton iconStyle ={styles.pink} iconClassName ="fa fa-heart" tooltip="Ligature" />
-                      <IconButton iconClassName ="fa fa-info" tooltip="Details" onClick={() => this.props.handleClubDialog(tile,true)}/>
-                       <IconButton iconClassName ="fa fa-times" iconStyle ={{color:'red'}} tooltip="Unrequest this book" onClick={() => this.props.handelRemoveRequest(tile)}/>
+                      <IconButton iconStyle ={styles.pink} iconClassName ="fas fa-heart" tooltip="Ligature" />
+                      <IconButton iconStyle={{color:'#3F51B5'}} iconClassName ="fas fa-info-circle" tooltip="Details" onClick={() => this.props.handleClubDialog(tile,true)}/>
+                       <IconButton iconClassName ="fas fa-times" iconStyle ={{color:'red'}} tooltip="Unrequest this book" onClick={() => this.props.handelRemoveRequest(tile)}/>
                     </div>
                   
                   </div>

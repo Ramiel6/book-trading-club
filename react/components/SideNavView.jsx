@@ -20,7 +20,7 @@ const SideNavView = (props) => {
               <Link to="/google-books" >
                 <MenuItem onClick={window.innerWidth >= 400 ? null: () =>props.drawerToggle(false)}>Google Books</MenuItem>
                 </Link><br />
-              <span className="side-nav-title"><li className="fa fa-user-circle-o" ></li> User Actions</span>
+              <span className="side-nav-title"><li className="far fa-user-circle fa-lg" ></li> User Actions</span>
               <Divider className="nav-divider" />
               <Link to="/mybooks" >
               <MenuItem onClick={window.innerWidth >= 400 ? null: () => props.drawerToggle(false)}>User Books</MenuItem>

@@ -51,8 +51,8 @@ class UserBooksView extends React.Component {
                           primary={true}
                           >
                           {this.props.user && tile.likes.includes(this.props.user._id) ?
-                          <IconButton iconStyle ={styles.pink} iconClassName ="fa fa-heart" tooltip="Unlike this book"  onClick={() => this.props.handleUnlikeBook(tile)}/>
-                          :<IconButton iconStyle ={styles.purple} iconClassName ="fa fa-heart" tooltip="Like this book" onClick={() => this.props.handleLikeBook(tile)} />}
+                          <IconButton iconStyle ={styles.pink} iconClassName ="fas fa-heart" tooltip="Unlike this book"  onClick={() => this.props.handleUnlikeBook(tile)}/>
+                          :<IconButton iconStyle ={styles.pinkBefore} iconClassName ="far fa-heart" tooltip="Like this book" onClick={() => this.props.handleLikeBook(tile)} />}
                       </Badge>
                       <Badge 
                           style={{padding: 0}} 
@@ -60,10 +60,10 @@ class UserBooksView extends React.Component {
                           badgeStyle={{width:18, height:18}} 
                           primary={true}
                           >
-                        <IconButton iconClassName ="fa fa-retweet" tooltip="Trade Requests for this book" onClick={() => this.props.handleReqDialog(tile,true)}/>
+                        <IconButton iconClassName ="fas fa-sync-alt" tooltip="Trade Requests for this book" onClick={() => this.props.handleReqDialog(tile,true)}/>
                       </Badge>
-                      <IconButton iconClassName ="fa fa-info" tooltip="Details" onClick={() => this.props.handleClubDialog(tile,true)}/>
-                      <IconButton iconClassName ="fa fa-trash" iconStyle ={styles.red} tooltip="Delete this book" onClick={() => this.props.handelDeleteBook(tile)}/>
+                      <IconButton iconStyle={{color:'#3F51B5'}} iconClassName ="fas fa-info-circle" tooltip="Details" onClick={() => this.props.handleClubDialog(tile,true)}/>
+                      <IconButton iconClassName ="fas fa-trash-alt" iconStyle ={styles.red} tooltip="Delete this book" onClick={() => this.props.handelDeleteBook(tile)}/>
                     </div>
                      
                   </div>
@@ -139,6 +139,10 @@ const styles = {
             pink:{
               color: '#fc4cce',
               textShadow: '2px 2px 5px #fc4cce'
+            },
+            pinkBefore:{
+              color: '#fc4cce',
+              textShadow: '0px 0px 1px red'
             },
             purple:{
               color: '#8d4cb0',

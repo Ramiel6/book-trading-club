@@ -69,19 +69,19 @@ class ClubBooksView extends React.Component {
                           primary={true}
                           >
                           {this.props.user && tile.likes.includes(this.props.user._id) ?
-                          <IconButton iconStyle ={styles.likeRed} iconClassName ="fa fa-heart" tooltip="Unlike this book"  onClick={() => this.props.handleUnlikeBook(tile)}/>
-                          :<IconButton iconStyle ={styles.pink} iconClassName ="fa fa-heart" tooltip="Like this book" onClick={() => this.props.handleLikeBook(tile)} />}
+                          <IconButton iconStyle ={styles.pink} iconClassName ="fas fa-heart" tooltip="Unlike this book"  onClick={() => this.props.handleUnlikeBook(tile)}/>
+                          :<IconButton iconStyle ={styles.pinkBefore} iconClassName ="far fa-heart" tooltip="Like this book" onClick={() => this.props.handleLikeBook(tile)} />}
                       </Badge>
                     {this.props.user && this.props.user._id === tile.owner ?  
-                            <IconButton iconStyle={{color:'#8BC34A'}} iconClassName ="fa fa-check-square-o" tooltip="Owen book" />:
+                            <IconButton iconStyle={{color:'#8BC34A'}} iconClassName ="far fa-check-circle" tooltip="Owen book" />:
                           (this.props.user && tile.requests.some(user => user.id === this.props.user._id) ?
-                              <IconButton iconStyle={{color:'orange'}} iconClassName ="fa fa-retweet" tooltip="Requested book"/>:
-                              <IconButton iconClassName ="fa fa-exchange" tooltip="Request this book" onClick={() => this.props.onUserClick(tile)}/>
+                              <IconButton iconStyle={{color:'orange'}} iconClassName ="far fa-retweet" tooltip="Requested book"/>:
+                              <IconButton iconClassName ="fas fa-exchange-alt" tooltip="Request this book" onClick={() => this.props.onUserClick(tile)}/>
                             )
                       
                       
                     }
-                      <IconButton iconClassName ="fa fa-info" tooltip="Detils" onClick={() => this.props.handleClubDialog(tile,true)}/>
+                      <IconButton iconStyle={{color:'#3F51B5'}} iconClassName ="fas fa-info-circle" tooltip="Detils" onClick={() => this.props.handleClubDialog(tile,true)}/>
                     </div>
                   
                   </div>
@@ -136,6 +136,10 @@ const styles = {
               color: '#fc4cce',
               textShadow: '2px 2px 5px #fc4cce'
             },
+            pinkBefore:{
+              color: '#fc4cce',
+              textShadow: '0px 0px 1px red'
+            },
             purple:{
               color: '#8d4cb0',
               textShadow: '2px 2px 5px #8d4cb0'
@@ -143,6 +147,9 @@ const styles = {
             likeRed:{
               color: '#ff002d',
               textShadow: '2px 2px 5px red'
+            },
+            indigo:{
+              color: '#3F51B5'
             },
             focusUnderLine:{
               borderColor: '#9E9D24'
