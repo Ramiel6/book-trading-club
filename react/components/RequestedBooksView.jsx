@@ -4,6 +4,7 @@ import React from 'react';
 import IconButton from 'material-ui/IconButton';
 import FlatButton from 'material-ui/FlatButton';
 import Dialog from 'material-ui/Dialog';
+import Badge from 'material-ui/Badge';
 import {Row, Col } from 'react-flexbox-grid';
 import WorkingView from './WorkingView.jsx';
 // const GoogleBooksView = (props) => { 
@@ -45,7 +46,16 @@ class RequestedBooksView extends React.Component {
                         />
                       </div>
                     <div className="card-bottom">
-                      <IconButton iconStyle ={styles.pink} iconClassName ="fas fa-heart" tooltip="Ligature" />
+                       <Badge 
+                          style={{padding: 0}} 
+                          badgeContent={tile.likes.length} 
+                          badgeStyle={{width:18, height:18}} 
+                          primary={true}
+                          >
+                          {this.props.user && tile.likes.includes(this.props.user._id) ?
+                          <IconButton iconStyle ={styles.pink} iconClassName ="fas fa-heart" tooltip="Unlike this book"  onClick={() => this.props.handleUnlikeBook(tile)}/>
+                          :<IconButton iconStyle ={styles.pinkBefore} iconClassName ="far fa-heart" tooltip="Like this book" onClick={() => this.props.handleLikeBook(tile)} />}
+                      </Badge>
                       <IconButton iconStyle={{color:'#3F51B5'}} iconClassName ="fas fa-info-circle" tooltip="Details" onClick={() => this.props.handleClubDialog(tile,true)}/>
                        <IconButton iconClassName ="fas fa-times" iconStyle ={{color:'red'}} tooltip="Unrequest this book" onClick={() => this.props.handelRemoveRequest(tile)}/>
                     </div>
@@ -85,7 +95,7 @@ class RequestedBooksView extends React.Component {
               </Col>
               <Col xs={8} md={8}>
                   <strong>Title:</strong> {this.props.clubBook.title}<br />
-                  <strong>Auther:</strong>{(this.props.clubBook.authors && 
+                  <strong>Auther:</strong> {(this.props.clubBook.authors && 
                                               this.props.clubBook.authors.map((author) => (author +', ') )) || ''}<br /><br />
                   <strong>Publish Date:</strong> {this.props.clubBook.publishedDate}<br />
                   <strong>Page Count:</strong> {this.props.clubBook.pageCount}<br />
@@ -100,7 +110,12 @@ class RequestedBooksView extends React.Component {
 )}}
 const styles = {
             pink:{
-              color: '#FFC0CB'
+              color: '#fc4cce',
+              textShadow: '2px 2px 5px #fc4cce'
+            },
+            pinkBefore:{
+              color: '#fc4cce',
+              textShadow: '0px 0px 1px red'
             },
           };
 export default RequestedBooksView;

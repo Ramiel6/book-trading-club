@@ -6,7 +6,7 @@ import { ConnectedRouter, push } from 'react-router-redux';
 
 import {getStatus,getGoogleBooks,getClubBooks, saveBook, exchangeBook, approveBook, 
         requestsDialog,clubDialog,handelSnackbar,drawerToggle,changeClubSearch,changeGoogleSearch,
-        deleteBook,removeRequest,likeBook,unlikeBook} from '../actions.js';
+        deleteBook,removeRequest,likeBook,unlikeBook,setPageItems} from '../actions.js';
 
 import Snackbar from 'material-ui/Snackbar';
 import { fadeIn } from 'react-animations';
@@ -68,6 +68,7 @@ function PropsRoute ({component: Component, name, path, ...rest}) {
 //     </FadeIn>
 //   )}/>
 // )
+
 class AppRouter extends React.Component {
   componentDidMount(){
         const {getStatus} = this.props
@@ -82,9 +83,9 @@ class AppRouter extends React.Component {
   exchangeClick = (book) => {
     this.props.exchangeBook(book)
       .then( ()=> {
-        this.props.handelSnackbar(true,'Exchange Requested',4000);
+        this.props.handelSnackbar(true,'Trade Requested',4000);
         this.props.getClubBooks(false);
-        }).catch((error)=>{console.log('exchange error')});
+        }).catch((error)=>{console.log('Request error')});
       
    
   }
@@ -96,7 +97,10 @@ class AppRouter extends React.Component {
       }
   handleApprove = (book,req) => {
         this.props.approveBook(book,req)
-          .then( ()=> this.props.handelSnackbar(true,'Exchange Approved',4000)).catch((error)=>{console.log('approve error')});
+          .then( ()=> {
+            this.props.handelSnackbar(true,'Trade Approved',4000)
+            this.props.getClubBooks(false);
+          }).catch((error)=>{console.log('approve error')});
         this.props.requestsDialog(null,false);
         
       }
@@ -105,7 +109,7 @@ class AppRouter extends React.Component {
         .then( ()=> {
           this.props.handelSnackbar(true,'Book Deleted',4000);
           this.props.getClubBooks();
-          }).catch((error)=>{console.log('delete error')});
+          }).catch((error)=>{console.log('Delete error')});
       }
   handelRemoveRequest= (book) => { 
       this.props.removeRequest(book)
@@ -133,13 +137,21 @@ class AppRouter extends React.Component {
   handleUnlikeBook = (book) => {
       this.props.unlikeBook(book);
       }
+  onChangePage = (page) => {
+     // update state with new page of items
+      // console.log(pageOfItems)
+       this.props.setPageItems({ pageOfItems: page });
+        // console.log('page')
+      }
+  
   
     render() {
       const googleBooks = this.props.googleBooks && this.props.googleBooks.items;
-      const ClubBooks = this.props.clubBooks.filter((book,index)=>(
-        this.props.clubSearchInput ?
-         book.title.toLowerCase().includes(this.props.clubSearchInput.toLowerCase()) && book : book
-         ));
+      // const ClubBooks = this.props.clubBooks.filter((book,index)=>(
+      //   this.props.clubSearchInput ?
+      //   book.title.toLowerCase().includes(this.props.clubSearchInput.toLowerCase()) && book : book
+      //   ));
+      const ClubBooks = this.props.clubBooksSearch || this.props.clubBooks
       const userBooks = this.props.user && this.props.clubBooks.filter((book,index)=>(
          book.owner === this.props.user._id && book
          ));
@@ -198,7 +210,8 @@ class AppRouter extends React.Component {
                           />
                     <PropsRoute  name="clubbooks" path="/club-books" 
                                 component={ClubBooksView}
-                                bookList = {ClubBooks}  
+                                bookList = {ClubBooks}
+                                pageOfItems ={this.props.pageOfItems}
                                 onUserClick={this.exchangeClick}
                                 handleClub={this.handleClub}
                                 handleClubSearch ={this.handleClubSearch}
@@ -210,13 +223,14 @@ class AppRouter extends React.Component {
                                 isWorking = {this.props.isWorking}
                                 handleLikeBook ={this.handleLikeBook}
                                 handleUnlikeBook ={this.handleUnlikeBook}
+                                onChangePage = {this.onChangePage}
                                 
                           />
                     <PrivateRoute   name="Userbooks" path="/mybooks" 
                                     component={UserBooksView}
                                     authed={this.props.isLogedin}
                                     isLoaded={this.props.isLoaded}
-                                    bookList = {userBooks}  
+                                    bookList = {userBooks} 
                                     onUserClick={this.saveClick}
                                     handleClub={this.handleClub}
                                     handleApprove={this.handleApprove}
@@ -243,6 +257,9 @@ class AppRouter extends React.Component {
                                     handleClubDialog={this.handleClubDialog}
                                     clubBook = {this.props.clubBook}
                                     isWorking = {this.props.isWorking}
+                                    handleLikeBook ={this.handleLikeBook}
+                                    handleUnlikeBook ={this.handleUnlikeBook}
+                                    user={this.props.user}
                           />
                     <PrivateRoute   name="RequestedBooks" path="/Requested-Books" 
                                     component={RequestedBooksView}
@@ -256,6 +273,9 @@ class AppRouter extends React.Component {
                                     handleClubDialog={this.handleClubDialog}
                                     clubBook = {this.props.clubBook}
                                     isWorking = {this.props.isWorking}
+                                    handleLikeBook ={this.handleLikeBook}
+                                    handleUnlikeBook ={this.handleUnlikeBook}
+                                    user={this.props.user}
                           />
                   <PrivateRoute path='/profile' 
                                 component={ProfileComp}
@@ -298,6 +318,7 @@ const mapStateToProps = (state, ownProps) => {
     googleBooks: state.books.googleBooks,
     googleSearchInput:state.books.googleSearchInput,
     clubBooks: state.books.clubBooks,
+    clubBooksSearch: state.books.clubBooksSearch,
     clubSearchInput:state.books.clubSearchInput,
     drawer: state.viewHandler.drawer,
     clubDialog: state.viewHandler.clubDialog,
@@ -308,6 +329,7 @@ const mapStateToProps = (state, ownProps) => {
     snackbarMsg: state.viewHandler.snackbarMsg,
     snackbarDuration: state.viewHandler.snackbarDuration,
     isWorking: state.viewHandler.isWorking,
+    pageOfItems: state.pagination.pageOfItems,
     isLogedin : state.authorization.isLogedin,
     isLoaded : state.authorization.isLoaded,
     user : state.authorization.user,
@@ -320,7 +342,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
   // You can now say this.props.createBook
   getGoogleBooks: input => dispatch(getGoogleBooks(input)),
-  getClubBooks: () => dispatch(getClubBooks()),
+  getClubBooks: (working) => dispatch(getClubBooks(working)),
   saveBook: book => dispatch(saveBook(book)),
   exchangeBook: book => dispatch(exchangeBook(book)),
   deleteBook: book => dispatch(deleteBook(book)),
@@ -335,6 +357,7 @@ const mapDispatchToProps = (dispatch) => {
   changeGoogleSearch: input => dispatch(changeGoogleSearch(input)),
   likeBook: (book) => dispatch(likeBook(book)),
   unlikeBook: (book) => dispatch(unlikeBook(book)),
+  setPageItems: pageOfItems => dispatch(setPageItems(pageOfItems)),
      
   };
 };

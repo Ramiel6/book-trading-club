@@ -6,6 +6,7 @@ import Badge from 'material-ui/Badge';
 import {Row, Col } from 'react-flexbox-grid';
 import WorkingView from './WorkingView.jsx';
 import SearchBar from './SearchBar.jsx';
+import Pagination from './PaginationCompRedux.jsx';
 
 class ClubBooksView extends React.Component {
  
@@ -23,6 +24,7 @@ class ClubBooksView extends React.Component {
           const input = e.target.value;
           this.props.handleClubSearch(input);
         }
+        
   render()  {
  return (
      <div>
@@ -45,8 +47,8 @@ class ClubBooksView extends React.Component {
                     <WorkingView />
                 </Col>
             </Row> :
-            <Row center="xs">
-            {this.props.bookList && this.props.bookList.map((tile,index)=>(
+            <div><Row center="xs">
+            {this.props.bookList && this.props.pageOfItems.map((tile,index)=>(
               <Col xs key={index}>
                
                   <div className="card">
@@ -75,7 +77,7 @@ class ClubBooksView extends React.Component {
                     {this.props.user && this.props.user._id === tile.owner ?  
                             <IconButton iconStyle={{color:'#8BC34A'}} iconClassName ="far fa-check-circle" tooltip="Owen book" />:
                           (this.props.user && tile.requests.some(user => user.id === this.props.user._id) ?
-                              <IconButton iconStyle={{color:'orange'}} iconClassName ="far fa-retweet" tooltip="Requested book"/>:
+                              <IconButton iconStyle={{color:'orange'}} iconClassName ="fas fa-exchange-alt" tooltip="Requested book"/>:
                               <IconButton iconClassName ="fas fa-exchange-alt" tooltip="Request this book" onClick={() => this.props.onUserClick(tile)}/>
                             )
                       
@@ -87,8 +89,19 @@ class ClubBooksView extends React.Component {
                   </div>
              
               </Col>
-             ))
-              }</Row>}
+             ))}
+               
+              </Row>
+              <Row center="xs">
+                  <Col xs={12} md={12}>
+                    <Pagination 
+                        items={this.props.bookList}
+                        onChangePage={(page) => this.props.onChangePage(page)} 
+                        />
+                  </Col>
+                </Row>
+                </div>
+            }
                   {this.props.clubBook && <Dialog
                     title="Book Details"
                     actions={[<FlatButton

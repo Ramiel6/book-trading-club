@@ -14,12 +14,13 @@ const SideNavView = (props) => {
             zDepth={1}
             docked={window.innerWidth >= 400 ? true:false}
           >
+              <Link to="/google-books" >
+                <MenuItem onClick={window.innerWidth >= 400 ? null: () =>props.drawerToggle(false)}>Google Books</MenuItem>
+                </Link>
               <Link to="/club-books" >
                 <MenuItem onClick={window.innerWidth >= 400 ? null: () =>props.drawerToggle(false)}>Browse Club Books</MenuItem>
                 </Link>
-              <Link to="/google-books" >
-                <MenuItem onClick={window.innerWidth >= 400 ? null: () =>props.drawerToggle(false)}>Google Books</MenuItem>
-                </Link><br />
+              <br />
               <span className="side-nav-title"><li className="far fa-user-circle fa-lg" ></li> User Actions</span>
               <Divider className="nav-divider" />
               <Link to="/mybooks" >

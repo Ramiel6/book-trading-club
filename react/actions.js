@@ -53,10 +53,11 @@ export const pageItemsAction = (pageOfItems) => {
     pageOfItems,
   };
 };
-export const changeClubSearchAction = (input) => {
+export const changeClubSearchAction = (input,clubBooksSearch) => {
   return {
     type: 'Change_Club_Search',
     input,
+    clubBooksSearch,
   };
 };
 export const changeGoogleSearchAction = (input) => {
@@ -163,8 +164,14 @@ export const handelSnackbar = function (open,message,autoHideDuration){
   };
 };
 export const changeClubSearch = function (input){
+  const clubBooks = store.getState().books.clubBooks;
+  const clubBooksSearch = clubBooks && clubBooks.filter((book,index)=>(
+        input ?
+        book.title.toLowerCase().includes(input.toLowerCase()) && book : book
+        ));
+        
   return function(dispatch) {
-      dispatch(changeClubSearchAction(input));
+      dispatch(changeClubSearchAction(input,clubBooksSearch));
   };
 };
 export const changeGoogleSearch = function (input){

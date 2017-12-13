@@ -17,7 +17,7 @@ class MainComp extends React.Component {
           <FeaturesView
             iconClassName='fas fa-plus'
             iconStyle={{color:'steelblue'}}
-            cardText='Add your books.' 
+            cardText='Add your books to our club collection.' 
             />
           
           <FeaturesView

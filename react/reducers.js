@@ -16,11 +16,13 @@ function BooksReducer (state = { clubBooks:[]} , action) {
         );
     case 'Change_Club_Search':
         return Object.assign({}, state,  
-         { clubSearchInput: action.input }
+         { clubSearchInput: action.input,
+            clubBooksSearch: action.clubBooksSearch
+         }
         );
     case 'Change_Google_Search':
         return Object.assign({}, state,  
-         { googleSearchInput: action.input }
+         { googleSearchInput: action.input}
         );
     default:
           return state;

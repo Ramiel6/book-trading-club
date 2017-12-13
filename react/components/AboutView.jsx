@@ -14,9 +14,9 @@ const AboutView = (props) => {
       </Row>
       <Row>
         <Col xs>
-          <h2>Description</h2>
-          <p>Book Trading Club App is a full-stack project for freeCodeCamp.</p>
-          <h2>Frontend Techniques</h2>
+          <h3>Description</h3>
+          <p className="decText">Book Trading Club App is a full-stack project for freeCodeCamp.</p>
+          <h3>Frontend Techniques</h3>
             <RaisedButton
                 label="React"
                 style={styles.button}
@@ -27,7 +27,7 @@ const AboutView = (props) => {
                 style={styles.button}
                 icon ={<ReduxIcon color='#764ABC' style={{width:26, height:26,marginBottom:4}} />}
                 />
-          <h2>UI Techniques</h2>
+          <h3>UI Techniques</h3>
               <RaisedButton
                     label="Matrial UI"
                     style={styles.button}
@@ -37,7 +37,7 @@ const AboutView = (props) => {
                     style={styles.button}
                     icon={<FontIcon style={{color:'#228ae6',marginBottom: 5,}} className="fab fa-font-awesome" />}
                     />
-          <h2>Backend Techniques</h2>
+          <h3>Backend Techniques</h3>
                 <RaisedButton
                     label="NodeJs"
                     style={styles.button}
@@ -58,7 +58,7 @@ const AboutView = (props) => {
                     style={styles.button}
                     icon={<PassportIcon style={{width:30, height:30,marginTop:4}} />}
                     />
-          <h2>APIs</h2>
+          <h3>APIs</h3>
           <RaisedButton
                     label="Google Book API"
                     style={styles.button}

@@ -122,7 +122,7 @@ class UserBooksView extends React.Component {
               </Col>
               <Col xs={8} md={8}>
                   <strong>Title:</strong> {this.props.clubBook.title}<br />
-                  <strong>Auther:</strong>{(this.props.clubBook.authors && 
+                  <strong>Auther:</strong> {(this.props.clubBook.authors && 
                                                 this.props.clubBook.authors.map((author) => (author +', ') )) || ''}<br /><br />
                   <strong>Publish Date:</strong> {this.props.clubBook.publishedDate}<br />
                   <strong>Page Count:</strong> {this.props.clubBook.pageCount}<br />
