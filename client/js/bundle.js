@@ -84106,79 +84106,83 @@ var AboutView = function AboutView(props) {
                 _reactFlexboxGrid.Col,
                 { xs: true },
                 _react2.default.createElement(
-                    'h3',
-                    null,
-                    'Description'
-                ),
-                _react2.default.createElement(
-                    'p',
-                    { className: 'decText' },
-                    'Book Trading Club App is a full-stack project for freeCodeCamp.'
-                ),
-                _react2.default.createElement(
-                    'h3',
-                    null,
-                    'Frontend Techniques'
-                ),
-                _react2.default.createElement(_RaisedButton2.default, {
-                    label: 'React',
-                    style: styles.button,
-                    icon: _react2.default.createElement(_FontIcon2.default, { style: { color: '#3b5998', marginBottom: 5 }, className: 'fab fa-react' })
-                }),
-                _react2.default.createElement(_RaisedButton2.default, {
-                    label: 'Redux',
-                    style: styles.button,
-                    icon: _react2.default.createElement(_SvgIcons.ReduxIcon, { color: '#764ABC', style: { width: 26, height: 26, marginBottom: 4 } })
-                }),
-                _react2.default.createElement(
-                    'h3',
-                    null,
-                    'UI Techniques'
-                ),
-                _react2.default.createElement(_RaisedButton2.default, {
-                    label: 'Matrial UI',
-                    style: styles.button
-                }),
-                _react2.default.createElement(_RaisedButton2.default, {
-                    label: 'Font Awesome 5',
-                    style: styles.button,
-                    icon: _react2.default.createElement(_FontIcon2.default, { style: { color: '#228ae6', marginBottom: 5 }, className: 'fab fa-font-awesome' })
-                }),
-                _react2.default.createElement(
-                    'h3',
-                    null,
-                    'Backend Techniques'
-                ),
-                _react2.default.createElement(_RaisedButton2.default, {
-                    label: 'NodeJs',
-                    style: styles.button,
-                    icon: _react2.default.createElement(_FontIcon2.default, { style: { color: '#43853D', marginBottom: 5 }, className: 'fab fa-node-js' })
-                }),
-                _react2.default.createElement(_RaisedButton2.default, {
-                    label: 'Express',
-                    style: styles.button
+                    'div',
+                    { className: 'about-div' },
+                    _react2.default.createElement(
+                        'h3',
+                        null,
+                        'Description'
+                    ),
+                    _react2.default.createElement(
+                        'p',
+                        { className: 'decText' },
+                        'Book Trading Club App is a full-stack project for freeCodeCamp.'
+                    ),
+                    _react2.default.createElement(
+                        'h3',
+                        null,
+                        'Frontend Techniques'
+                    ),
+                    _react2.default.createElement(_RaisedButton2.default, {
+                        label: 'React',
+                        style: styles.button,
+                        icon: _react2.default.createElement(_FontIcon2.default, { style: { color: '#3b5998', marginBottom: 5 }, className: 'fab fa-react' })
+                    }),
+                    _react2.default.createElement(_RaisedButton2.default, {
+                        label: 'Redux',
+                        style: styles.button,
+                        icon: _react2.default.createElement(_SvgIcons.ReduxIcon, { color: '#764ABC', style: { width: 26, height: 26, marginBottom: 4 } })
+                    }),
+                    _react2.default.createElement(
+                        'h3',
+                        null,
+                        'UI Techniques'
+                    ),
+                    _react2.default.createElement(_RaisedButton2.default, {
+                        label: 'Matrial UI',
+                        style: styles.button
+                    }),
+                    _react2.default.createElement(_RaisedButton2.default, {
+                        label: 'Font Awesome 5',
+                        style: styles.button,
+                        icon: _react2.default.createElement(_FontIcon2.default, { style: { color: '#228ae6', marginBottom: 5 }, className: 'fab fa-font-awesome' })
+                    }),
+                    _react2.default.createElement(
+                        'h3',
+                        null,
+                        'Backend Techniques'
+                    ),
+                    _react2.default.createElement(_RaisedButton2.default, {
+                        label: 'NodeJs',
+                        style: styles.button,
+                        icon: _react2.default.createElement(_FontIcon2.default, { style: { color: '#43853D', marginBottom: 5 }, className: 'fab fa-node-js' })
+                    }),
+                    _react2.default.createElement(_RaisedButton2.default, {
+                        label: 'Express',
+                        style: styles.button
 
-                }),
-                _react2.default.createElement(_RaisedButton2.default, {
-                    label: 'MongoDB',
-                    style: styles.button,
-                    icon: _react2.default.createElement(_SvgIcons.MongoIcon, { style: { width: 26, height: 26, marginBottom: 4 } })
-                }),
-                _react2.default.createElement(_RaisedButton2.default, {
-                    label: 'PassportJs',
-                    style: styles.button,
-                    icon: _react2.default.createElement(_SvgIcons.PassportIcon, { style: { width: 30, height: 30, marginTop: 4 } })
-                }),
-                _react2.default.createElement(
-                    'h3',
-                    null,
-                    'APIs'
-                ),
-                _react2.default.createElement(_RaisedButton2.default, {
-                    label: 'Google Book API',
-                    style: styles.button,
-                    icon: _react2.default.createElement(_FontIcon2.default, { style: { color: '#F44336', marginBottom: 5 }, className: 'fab fa-google' })
-                })
+                    }),
+                    _react2.default.createElement(_RaisedButton2.default, {
+                        label: 'MongoDB',
+                        style: styles.button,
+                        icon: _react2.default.createElement(_SvgIcons.MongoIcon, { style: { width: 26, height: 26, marginBottom: 4 } })
+                    }),
+                    _react2.default.createElement(_RaisedButton2.default, {
+                        label: 'PassportJs',
+                        style: styles.button,
+                        icon: _react2.default.createElement(_SvgIcons.PassportIcon, { style: { width: 30, height: 30, marginTop: 4 } })
+                    }),
+                    _react2.default.createElement(
+                        'h3',
+                        null,
+                        'APIs'
+                    ),
+                    _react2.default.createElement(_RaisedButton2.default, {
+                        label: 'Google Book API',
+                        style: styles.button,
+                        icon: _react2.default.createElement(_FontIcon2.default, { style: { color: '#F44336', marginBottom: 5 }, className: 'fab fa-google' })
+                    })
+                )
             )
         )
     );

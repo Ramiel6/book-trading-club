@@ -14,8 +14,10 @@ const AboutView = (props) => {
       </Row>
       <Row>
         <Col xs>
-          <h3>Description</h3>
-          <p className="decText">Book Trading Club App is a full-stack project for freeCodeCamp.</p>
+          <div className="about-div">
+              <h3>Description</h3>
+              <p className="decText">Book Trading Club App is a full-stack project for freeCodeCamp.</p>
+          
           <h3>Frontend Techniques</h3>
             <RaisedButton
                 label="React"
@@ -64,6 +66,7 @@ const AboutView = (props) => {
                     style={styles.button}
                     icon={<FontIcon style={{color:'#F44336',marginBottom: 5,}} className="fab fa-google" />}
                     />
+                </div>
         </Col>
       </Row>
         </div>

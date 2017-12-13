@@ -209,6 +209,18 @@ a {
 .working-cog{
     font-size: 45px !important;
 }
+.about-div {
+    display: block;
+    color: rgba(0, 0, 0, 0.87);
+    background: #FFFFFF;
+    width: 97%;
+    padding: 12px 12px 12px 24px;
+    margin-top: 1%; 
+    word-wrap: break-word;
+    /*border-radius: 5px;*/
+    border: 1px solid #9E9D24;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.12) 0px 1px 4px;
+}
 .decText{
   margin-left: 24px
 }
