@@ -2,11 +2,13 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+
 const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
   template: __dirname + '/client/index.html',
   filename: 'index.html',
   inject: 'body'
 });
+
 const configs = {
      entry: __dirname +  '/react/app.js',
      output: {
@@ -60,8 +62,9 @@ if (process.env.NODE_ENV === 'production') {
         }
     })
  ];
-}else{
-    configs.plugins = [HtmlWebpackPluginConfig];
 }
+// else{
+//     configs.plugins = [HtmlWebpackPluginConfig];
+// }
  
 module.exports = configs;

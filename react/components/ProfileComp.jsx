@@ -46,12 +46,15 @@ class ProfileComp extends React.Component {
                         style={styles.button}
                         icon={<FontIcon style={styles.fontIcon} className="fas fa-link" />}
                         /></Link>}
-                    {user.local.email  && <RaisedButton
-                        onClick={()=> this.props.unlinkLocal()}
-                        label="Remove"
-                        style={styles.button}
-                        icon={<FontIcon style={styles.fontIcon} className="fas fa-unlink" />}
-                        />}
+                    
+                    {user.local.email  && ( (user.google && user.google.token) || (user.github && user.github.token) ) &&
+                    
+                        <RaisedButton
+                            onClick={()=> this.props.unlinkLocal()}
+                            label="Remove"
+                            style={styles.button}
+                            icon={<FontIcon style={styles.fontIcon} className="fas fa-unlink" />}
+                            />}
                 </div>
             </AccordionItem>}
             {user.google && user.google.token && <AccordionItem 
@@ -67,12 +70,13 @@ class ProfileComp extends React.Component {
                 </p>
                <div>
                  
-                    {user.google.token  && <RaisedButton
-                        onClick={()=> this.props.unlinkGoogle()}
-                        label="Remove"
-                        style={styles.button}
-                        icon={<FontIcon style={styles.fontIcon} className="fas fa-unlink" />}
-                        />}
+                    {user.google.token  && ( (user.local && user.local.email) || (user.github && user.github.token) ) &&
+                        <RaisedButton
+                            onClick={()=> this.props.unlinkGoogle()}
+                            label="Remove"
+                            style={styles.button}
+                            icon={<FontIcon style={styles.fontIcon} className="fas fa-unlink" />}
+                            />}
                 </div>
            </AccordionItem>}
             
@@ -87,12 +91,13 @@ class ProfileComp extends React.Component {
                 </p>
                 <div>
                  
-                    {user.github.token  && <RaisedButton
-                        onClick={()=> this.props.unlinkGithub()}
-                        label="Remove"
-                        style={styles.button}
-                        icon={<FontIcon style={styles.fontIcon} className="fas fa-unlink" />}
-                        />}
+                    {user.github.token  && ( (user.local && user.local.email) || (user.google && user.google.token) ) &&
+                        <RaisedButton
+                            onClick={()=> this.props.unlinkGithub()}
+                            label="Remove"
+                            style={styles.button}
+                            icon={<FontIcon style={styles.fontIcon} className="fas fa-unlink" />}
+                            />}
                 </div>
             </AccordionItem>}
             </Accordion>

@@ -33,7 +33,7 @@ class MainComp extends React.Component {
             />
     
         </Col>
-        <Col xs={6} md={6}>
+        <Col xs>
            <FeaturesView
             iconClassName='fas fa-user'
             iconStyle={{color:'#111111'}}

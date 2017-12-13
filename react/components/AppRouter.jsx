@@ -169,7 +169,7 @@ class AppRouter extends React.Component {
           <div>
             <NavComp />
             <div className="content">
-            {this.props.location && this.props.location.pathname == '/' && <div className="banner">
+            {window.innerWidth >= 800 && this.props.location && this.props.location.pathname == '/' && <div className="banner">
       
             </div>}
             <Grid fluid>

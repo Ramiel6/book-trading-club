@@ -50087,7 +50087,7 @@ var AppRouter = function (_React$Component) {
           _react2.default.createElement(
             'div',
             { className: 'content' },
-            this.props.location && this.props.location.pathname == '/' && _react2.default.createElement('div', { className: 'banner' }),
+            window.innerWidth >= 800 && this.props.location && this.props.location.pathname == '/' && _react2.default.createElement('div', { className: 'banner' }),
             _react2.default.createElement(
               _reactFlexboxGrid.Grid,
               { fluid: true },
@@ -74228,7 +74228,7 @@ var MainComp = function (_React$Component) {
           ),
           _react2.default.createElement(
             _reactFlexboxGrid.Col,
-            { xs: 6, md: 6 },
+            { xs: true },
             _react2.default.createElement(_FeaturesView2.default, {
               iconClassName: 'fas fa-user',
               iconStyle: { color: '#111111' },
@@ -74268,20 +74268,34 @@ var _react2 = _interopRequireDefault(_react);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var FeaturesView = function FeaturesView(props) {
-    return _react2.default.createElement(
-        "div",
-        { className: "features-circle" },
-        _react2.default.createElement(
+    if (window.innerWidth >= 400) {
+        return _react2.default.createElement(
             "div",
-            { className: "features-inner-circle" },
-            _react2.default.createElement("i", { style: props.iconStyle, className: props.iconClassName + ' features-circle-icon', "aria-hidden": "true" })
-        ),
-        _react2.default.createElement(
+            { className: "features-circle" },
+            _react2.default.createElement(
+                "div",
+                { className: "features-inner-circle" },
+                _react2.default.createElement("i", { style: props.iconStyle, className: props.iconClassName + ' features-circle-icon' })
+            ),
+            _react2.default.createElement(
+                "div",
+                { className: "features-span" },
+                props.cardText
+            )
+        );
+    } else {
+        return _react2.default.createElement(
             "div",
-            { className: "features-span" },
-            props.cardText
-        )
-    );
+            { className: "features-circle" },
+            _react2.default.createElement(
+                "div",
+                { className: "features-span" },
+                _react2.default.createElement("i", { style: props.iconStyle, className: props.iconClassName + ' features-circle-icon' }),
+                _react2.default.createElement("br", null),
+                props.cardText
+            )
+        );
+    }
 };
 exports.default = FeaturesView;
 
@@ -82712,7 +82726,7 @@ var ProfileComp = function (_React$Component) {
                                             icon: _react2.default.createElement(_FontIcon2.default, { style: styles.fontIcon, className: 'fas fa-link' })
                                         })
                                     ),
-                                    user.local.email && _react2.default.createElement(_RaisedButton2.default, {
+                                    user.local.email && (user.google && user.google.token || user.github && user.github.token) && _react2.default.createElement(_RaisedButton2.default, {
                                         onClick: function onClick() {
                                             return _this2.props.unlinkLocal();
                                         },
@@ -82776,7 +82790,7 @@ var ProfileComp = function (_React$Component) {
                                 _react2.default.createElement(
                                     'div',
                                     null,
-                                    user.google.token && _react2.default.createElement(_RaisedButton2.default, {
+                                    user.google.token && (user.local && user.local.email || user.github && user.github.token) && _react2.default.createElement(_RaisedButton2.default, {
                                         onClick: function onClick() {
                                             return _this2.props.unlinkGoogle();
                                         },
@@ -82835,7 +82849,7 @@ var ProfileComp = function (_React$Component) {
                                 _react2.default.createElement(
                                     'div',
                                     null,
-                                    user.github.token && _react2.default.createElement(_RaisedButton2.default, {
+                                    user.github.token && (user.local && user.local.email || user.google && user.google.token) && _react2.default.createElement(_RaisedButton2.default, {
                                         onClick: function onClick() {
                                             return _this2.props.unlinkGithub();
                                         },
