@@ -21,6 +21,7 @@ a {
     top:0 !important;
 }
 .banner{
+    /*Photo by Alfons Morales on Unsplash*/
     background-image: url(../imgs/bookshelf.jpg);
     height: 300px;
     margin-top:-5px;
