@@ -40,7 +40,11 @@ if (process.env.NODE_ENV === 'production') {
             drop_console: true, // strips console statements
             sequences: true,
             booleans: true,
+          },
+          mangle: {
+              safari10: true,
           }
+          
      }),
     // new webpack.DefinePlugin({
     //     'process.env': {
