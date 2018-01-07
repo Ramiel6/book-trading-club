@@ -48,7 +48,7 @@ app.get("/api/userbooks",isLoggedIn, function (request, response) {
 	let userId = request.query.userId;
 	book.find({'owner': userId}).exec(function (err,results) {
 	    if(err) throw err;
-	   console.log("fund user");
+	    console.log("fund user");
 	    response.status(200).json({results:results});
 	    
 	});
@@ -56,6 +56,7 @@ app.get("/api/userbooks",isLoggedIn, function (request, response) {
 app.post("/api/savebook",isLoggedIn, function (request, response) {
 	let userBook = request.body;
 	console.log(userBook);
+	 if (!userBook) return response.status(400).end("Please send vaild data!");
 	 var new_book = new book(userBook);
         new_book.save(function (err) {
           if (err) throw err;
@@ -71,7 +72,8 @@ app.post("/api/savebook",isLoggedIn, function (request, response) {
 });
 app.post("/api/exchange-book",isLoggedIn, function (request, response) {
 	let requestBook = request.body;
-	console.log(requestBook);
+// 	console.log(requestBook);
+	if (!requestBook) return response.status(400).end("Please send vaild data!");
 	book.update({'_id': requestBook.bookId},{
     	$push: { 'requests': {id:requestBook.userId, name:requestBook.userName} } 
                     },function (err,data) {
@@ -89,7 +91,8 @@ app.post("/api/exchange-book",isLoggedIn, function (request, response) {
 });
 app.post("/api/approve-book",isLoggedIn, function (request, response) {
 	let requestBook = request.body;
-	console.log(requestBook);
+// 	console.log(requestBook);
+	if (!requestBook) return response.status(400).end("Please send vaild data!");
 	book.update({'_id': requestBook.bookId},{
     	$set: { 'requiredBy': requestBook.userId,
 	            'requests':[] },
@@ -100,18 +103,20 @@ app.post("/api/approve-book",isLoggedIn, function (request, response) {
                     response.status(200).end("Request Successfull");
             });
 });
-app.post("/api/delete-book",isLoggedIn, function (request, response) {
-	let delBook = request.body;
-	console.log(delBook);
-  book.deleteOne({ "_id" : delBook._id}, function (err){
+app.delete("/api/delete-book/:bookId",isLoggedIn, function (request, response) {
+	let bookId = request.params.bookId;
+// 	console.log(bookId);
+  if (!bookId) return response.status(400).end("Please send vaild data!");
+  book.deleteOne({ "_id" : bookId}, function (err){
           if (err) throw err;
           console.log("Deleted Successfull");
           response.status(200).end("Deleted Successfull");
   });
 });
-app.post("/api/remove-request",isLoggedIn, function (request, response) {
+app.put("/api/remove-request",isLoggedIn, function (request, response) {
 	let removedReq = request.body;
-	console.log(removedReq);
+// 	console.log(removedReq);
+  if (!removedReq) return response.status(400).end("Please send vaild data!");
   book.update({'_id': removedReq.bookId},{
                         $pull: { 'requests': {id:removedReq.userId} } 
                         },function (err,data) {
@@ -121,10 +126,11 @@ app.post("/api/remove-request",isLoggedIn, function (request, response) {
                         });  
 });
 
-app.post("/api/like-book",isLoggedIn, function (request, response) {
+app.put("/api/like-book",isLoggedIn, function (request, response) {
 	let likedBook = request.body;
 	let user = request.user;
 // 	console.log(user._id);
+   if (!likedBook) return response.status(400).end("Please send vaild data!");
    book.findOne({'_id': likedBook.bookId}, function(err, results) { 
       if (err) throw err;
       if( results.likes.includes(user._id.toString()) ){
@@ -142,10 +148,11 @@ app.post("/api/like-book",isLoggedIn, function (request, response) {
   
 });
 
-app.post("/api/unlike-book",isLoggedIn, function (request, response) {
+app.put("/api/unlike-book",isLoggedIn, function (request, response) {
 	let likedBook = request.body;
 	let user = request.user;
 // 	console.log(user._id);
+   if (!likedBook) return response.status(400).end("Please send vaild data!");
    book.findOne({'_id': likedBook.bookId}, function(err, results) { 
       if (err) throw err;
       if (results.likes.includes(user._id.toString()) ){

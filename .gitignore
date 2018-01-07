@@ -1,0 +1,7 @@
+/data/*
+/node_modules/*
+/.c9/*
+/auth/authConfig.js
+/routes/apiKey.js
+webpack.config.p.js
+info.text

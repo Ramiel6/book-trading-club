@@ -27,20 +27,6 @@ if (process.env.NODE_ENV === 'production') {
     configs.devtool = 'source-map';
     configs.plugins = [
      HtmlWebpackPluginConfig,
-    //  new webpack.optimize.UglifyJsPlugin({
-    //       comments: false, // remove comments
-    //       compress: {
-    //         unused: true,
-    //         dead_code: true, // big one--strip code that will never execute
-    //         warnings: false, // good for prod apps so users can't peek behind curtain
-    //         drop_debugger: true,
-    //         conditionals: true,
-    //         evaluate: true,
-    //         drop_console: true, // strips console statements
-    //         sequences: true,
-    //         booleans: true,
-    //       }
-    //     }),
     new UglifyJSPlugin({
        sourceMap: true,
        comments: false, // remove comments
@@ -56,11 +42,11 @@ if (process.env.NODE_ENV === 'production') {
             booleans: true,
           }
      }),
-    new webpack.DefinePlugin({
-        'process.env': {
-            'NODE_ENV': JSON.stringify('production')
-        }
-    })
+    // new webpack.DefinePlugin({
+    //     'process.env': {
+    //         'NODE_ENV': JSON.stringify('production')
+    //     }
+    // })
  ];
 }
 // else{

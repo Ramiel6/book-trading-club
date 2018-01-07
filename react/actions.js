@@ -361,9 +361,9 @@ export const deleteBook = function (book){
          // Returns a promise
         // console.log(book)
          return Axios({
-           method: 'POST',
-           url: '/api/delete-book',
-           data:book
+           method: 'DELETE',
+           url: '/api/delete-book/' + book._id,
+          // data:book
          })
           .then(function Success (json) {
             // Dispatch another action
@@ -396,7 +396,7 @@ export const removeRequest = function (book){
          // Returns a promise
         // console.log(book)
          return Axios({
-           method: 'POST',
+           method: 'PUT',
            url: '/api/remove-request',
            data:data
          })
@@ -429,7 +429,7 @@ export const likeBook = function (book){
   return function(dispatch){
      // Returns a promise
      return Axios({
-       method: 'POST',
+       method: 'PUT',
        url: '/api/like-book',
        data:data
      })
@@ -463,7 +463,7 @@ export const unlikeBook = function (book){
   return function(dispatch){
      // Returns a promise
      return Axios({
-       method: 'POST',
+       method: 'PUT',
        url: '/api/unlike-book',
        data:data
      })
@@ -531,7 +531,7 @@ export const changePassword = function (oldPassword,password){
     return function(dispatch){
        // Returns a promise
        return Axios({
-         method: 'POST',
+         method: 'PUT',
          url: '/change-password',
          data:data
        })
@@ -568,7 +568,7 @@ export const changeAddress = function (name,city,state){
     return function(dispatch){
        // Returns a promise
        return Axios({
-         method: 'POST',
+         method: 'PUT',
          url: '/change-address',
          data:data
        })
@@ -601,7 +601,7 @@ export const login = function (user){
   return function(dispatch){
      // Returns a promise
      return Axios({
-       method: 'POST',
+       method: 'PUT',
        url: '/login',
        data:data
      })

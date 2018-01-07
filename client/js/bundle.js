@@ -3423,9 +3423,9 @@ var deleteBook = exports.deleteBook = function deleteBook(book) {
       // Returns a promise
       // console.log(book)
       return (0, _axios2.default)({
-        method: 'POST',
-        url: '/api/delete-book',
-        data: book
+        method: 'DELETE',
+        url: '/api/delete-book/' + book._id
+        // data:book
       }).then(function Success(json) {
         // Dispatch another action
         // to consume data
@@ -3456,7 +3456,7 @@ var removeRequest = exports.removeRequest = function removeRequest(book) {
       // Returns a promise
       // console.log(book)
       return (0, _axios2.default)({
-        method: 'POST',
+        method: 'PUT',
         url: '/api/remove-request',
         data: data
       }).then(function Success(json) {
@@ -3487,7 +3487,7 @@ var likeBook = exports.likeBook = function likeBook(book) {
     return function (dispatch) {
       // Returns a promise
       return (0, _axios2.default)({
-        method: 'POST',
+        method: 'PUT',
         url: '/api/like-book',
         data: data
       }).then(function Success(json) {
@@ -3519,7 +3519,7 @@ var unlikeBook = exports.unlikeBook = function unlikeBook(book) {
     return function (dispatch) {
       // Returns a promise
       return (0, _axios2.default)({
-        method: 'POST',
+        method: 'PUT',
         url: '/api/unlike-book',
         data: data
       }).then(function Success(json) {
@@ -3583,7 +3583,7 @@ var changePassword = exports.changePassword = function changePassword(oldPasswor
     return function (dispatch) {
       // Returns a promise
       return (0, _axios2.default)({
-        method: 'POST',
+        method: 'PUT',
         url: '/change-password',
         data: data
       }).then(function Success(json) {
@@ -3618,7 +3618,7 @@ var changeAddress = exports.changeAddress = function changeAddress(name, city, s
     return function (dispatch) {
       // Returns a promise
       return (0, _axios2.default)({
-        method: 'POST',
+        method: 'PUT',
         url: '/change-address',
         data: data
       }).then(function Success(json) {
@@ -3649,7 +3649,7 @@ var login = exports.login = function login(user) {
   return function (dispatch) {
     // Returns a promise
     return (0, _axios2.default)({
-      method: 'POST',
+      method: 'PUT',
       url: '/login',
       data: data
     }).then(function Success(response) {

@@ -1,15 +1,18 @@
+////////////////////// credit /////////////////////////////////////////////////////////////////////////
+// http://mherman.org/blog/2015/01/31/local-authentication-with-passport-and-express-4/#.Wd8ffTLYVdh
+// http://mherman.org/blog/2015/07/02/handling-user-authentication-with-the-mean-stack/#.Wd9nZzLYVdg
+// http://devdactic.com/restful-api-user-authentication-2/
+// https://scotch.io/tutorials/easy-node-authentication-setup-and-local
+// https://github.com/nax3t/angular-express-passport-tutorial/blob/master/facebook.md
+// https://github.com/brandonmcquarie/easy-node-authentication-angular
+///////////////////////////////////////////////////////////////////////////////
+
 var LocalStrategy   = require('passport-local').Strategy;
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 var GitHubStrategy = require('passport-github2').Strategy;
-var configAuth = require('../auth/authConfig.js');
+var configAuth = require('./authConfig.js');
+var notVaild = require('./authValidator.js');
 module.exports = function (app, passport, Account) {
-// passport.serializeUser(function(user, done) {
-//     done(null, user);
-//   });
-
-// passport.deserializeUser(function(user, done) {
-//     done(null, user);
-//   });
 
 passport.serializeUser(function (user, done) {
 		done(null, user.id);
@@ -31,8 +34,21 @@ passport.use('local-signup', new LocalStrategy({
 function(req, email, password, done) {
     // console.log(req)
     var name = req.body.name;
-    if (email){
-        email = email.toLowerCase(); // Use lower-case e-mails to avoid case-sensitive e-mail matching
+    
+    if (!email || !password){
+        return done(null, { error: 'All fields are required!' });
+    }
+    else if ( email.length > 100 || name.length > 100 ){
+        return done(null, { error: 'Values are too long!' });
+    }
+    else if ( notVaild.emailValidator(email) ){
+        return done(null, { error: 'Please enter a valid email address!' });
+    } 
+    else if ( name && notVaild.nameValidator(name) ){
+        return done(null, { error: 'Please enter a valid name!' });
+    }
+    else {
+         email = email.toLowerCase(); // Use lower-case e-mails to avoid case-sensitive e-mail matching
     }
     // asynchronous
     process.nextTick(function() {
@@ -87,6 +103,18 @@ function(req, email, password, done) {
 
 passport.use('local-login', new LocalStrategy(
 	  function(email, password, done) {
+	    if (!email || !password){
+            return done(null, { error: 'All fields are required!' });
+        }
+        else if ( email.length > 100 ){
+            return done(null, { error: 'email value is too long!' });
+        }
+        else if (notVaild.emailValidator(email)){
+            return done(null, { error: 'Please enter a valid email address!' });
+        } else {
+            email = email.toLowerCase(); // Use lower-case e-mails to avoid case-sensitive e-mail matching
+        }
+	     
 	     Account.findOne({
 	      'local.email' :  email
 	    }, function(err, user) {

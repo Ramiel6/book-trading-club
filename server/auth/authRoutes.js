@@ -39,7 +39,7 @@ app.post('/register', function(req, res, next) {
     })(req, res);
 });
 
-app.post('/login', function(req, res, next) {
+app.put('/login', function(req, res, next) {
   passport.authenticate('local-login', function(err, myUser, info) {
     if (err) {
       return next(err);
@@ -90,7 +90,7 @@ app.get('/status', function(req, res) {
   // res.redirect('/');
 });
 
-app.post('/change-password',isLoggedIn, function(req, res, next) {
+app.put('/change-password',isLoggedIn, function(req, res, next) {
     // console.log('change-password');
     // console.log(req.body);
     var user = req.user;
@@ -112,12 +112,15 @@ app.post('/change-password',isLoggedIn, function(req, res, next) {
     });
 });
 
-app.post('/change-address',isLoggedIn, function(req, res, next) {
+app.put('/change-address',isLoggedIn, function(req, res, next) {
     // console.log('change-password');
     // console.log(req.body);
     var user = req.user;
     if (!req.body.city || !req.body.state) {
         return res.status(400).json({ err: 'City and State are required' });
+    }
+    else if (req.body.city.length > 100 || req.body.state.length > 100) {
+        return res.status(400).json({ err: 'Values are too long!' });
     }
     if (!user)
         return res.status(400).json({ err: "User not found!" });
