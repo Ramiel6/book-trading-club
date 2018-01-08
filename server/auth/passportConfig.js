@@ -38,7 +38,7 @@ function(req, email, password, done) {
     if (!email || !password){
         return done(null, { error: 'All fields are required!' });
     }
-    else if ( email.length > 100 || name.length > 100 ){
+    else if ( email.length > 128 || name.length > 128 ){
         return done(null, { error: 'Values are too long!' });
     }
     else if ( notVaild.emailValidator(email) ){
@@ -106,7 +106,7 @@ passport.use('local-login', new LocalStrategy(
 	    if (!email || !password){
             return done(null, { error: 'All fields are required!' });
         }
-        else if ( email.length > 100 ){
+        else if ( email.length > 128 ){
             return done(null, { error: 'email value is too long!' });
         }
         else if (notVaild.emailValidator(email)){

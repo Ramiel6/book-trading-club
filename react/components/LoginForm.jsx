@@ -11,7 +11,7 @@ const validate = values => {
     if (!values[ field ]) {
       errors[ field ] = 'Required';
     }
-    else if (values[ field ].length > 100) {
+    else if (values[ field ].length > 128) {
       errors[ field ] = 'Value is too long';
     }
   });

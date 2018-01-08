@@ -5,7 +5,9 @@
   "main": "server.js",
   "repository": "",
   "author": "Ramy Thakeb <ramy.thakeb@gmail.com>",
-  "scripts": {},
+  "scripts": {
+    "start": "node server/server.js"
+  },
   "dependencies": {
     "async": "^2.6.0",
     "axios": "^0.17.1",

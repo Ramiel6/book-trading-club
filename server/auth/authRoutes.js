@@ -97,6 +97,9 @@ app.put('/change-password',isLoggedIn, function(req, res, next) {
     if (!req.body.oldPassword || !req.body.password) {
         return res.status(400).json({ err: 'Old Password and Password required' });
     }
+    else if(req.body.password.length > 128){
+      return res.status(400).json({ err: 'Password are too long' });
+    }
  // if no user is found, return the message
    if (!user)
         return res.status(400).json({ err: "User not found!" });
