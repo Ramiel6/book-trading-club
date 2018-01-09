@@ -505,7 +505,7 @@ export const signUp = function (user){
         // Dispatch another action
         // to consume data
         console.log(json);
-        console.log("Success")
+        console.log("Success");
         dispatch(getStatus());
         dispatch(handelSnackbar(true,'Signed Up Successfull',3000));
         store.dispatch(push('/profile'));

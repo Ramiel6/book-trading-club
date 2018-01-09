@@ -1,4 +1,4 @@
-//https://themeteorchef.com/tutorials/getting-started-with-react-router-v4
+// https://themeteorchef.com/tutorials/getting-started-with-react-router-v4
 import 'babel-polyfill';
 import React from 'react';
 import { Provider } from 'react-redux';
